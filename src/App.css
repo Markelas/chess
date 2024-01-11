@@ -14,4 +14,21 @@
 .board {
     width: calc(64px * 8); /* Ширина доски */
     height: calc(64px * 8); /* Высота доски */
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.cell {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.black {
+    background-color: #919191;
+}
+.white{
+    background-color: #f6e6ca;
 }
