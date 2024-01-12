@@ -33,6 +33,28 @@ export class Board {
         }
     }
 
+    public getCopyBoard() : Board {
+        // Копируем доску
+        const newBoard = new Board();
+        // Передавая в нее ячейки
+        newBoard.cells = this.cells;
+        return newBoard;
+    }
+
+    public higtlightCells(selectedCell: Cell | null) {
+        //В цикле будем проходить по всем ячейкам и проверять, можно ли наступить на эту ячейку
+        for (let i=0; i < this.cells.length; i++) {
+            const row = this.cells[i];
+            for (let j=0; j < row.length; j++) {
+                // target - потециальная ячейка, на которую можно сходить
+                const target = row[j];
+                // Вызываем фигуру, на выбранной ячейке и на ней вызываем метод canMove
+                // Метод возвращает true, если может сходить, либо false
+                target.avaliable = !!selectedCell?.figure?.canMove(target)
+            }
+        }
+    }
+
     public getCell(x:number, y:number) {
         //Возвращаем y и x
         return this.cells[y][x]
