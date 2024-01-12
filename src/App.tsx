@@ -18,6 +18,8 @@ const App = () => {
         const newBoard = new Board();
         // Обращаемся к классу initCells из Board.ts, где формировали ячейки с помощью циклов
         newBoard.initCells()
+        newBoard.addFigures()
+
         // Изменяем текущий state у board
         setBoard(newBoard)
     }

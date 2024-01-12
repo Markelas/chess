@@ -1,5 +1,5 @@
 import {Colors} from "./Colors";
-import {Figures} from "./figures/Figures";
+import {Figure} from "./figures/Figures";
 import {Board} from "./Board";
 
 export class Cell {
@@ -8,7 +8,7 @@ export class Cell {
     readonly color: Colors;
     // x, y и цвет на доске изменить нельзя
 
-    figure: Figures | null;
+    figure: Figure | null;
     // А местоположение фигуры можно
 
     board: Board;
@@ -18,7 +18,7 @@ export class Cell {
     id: number; // Для react ключей
 
     //С помощью конструктора формируем
-    constructor(board: Board, x:number, y: number, color: Colors, figure: Figures | null) {
+    constructor(board: Board, x:number, y: number, color: Colors, figure: Figure | null) {
         this.x = x;
         this.y = y;
         this.color = color;
