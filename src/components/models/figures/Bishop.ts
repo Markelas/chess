@@ -20,6 +20,8 @@ export class Bishop extends Figure {
         //В дочернем классе описываем условия только для конкретной фигуры
         if(!super.canMove(target))
             return false;
-        return true;
+        if(this.cell.isEmptyDiagonal(target))
+            return true;
+        return false;
     }
 }
