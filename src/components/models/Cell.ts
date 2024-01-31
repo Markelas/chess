@@ -102,10 +102,24 @@ export class Cell {
         this.figure.cell = this;
     }
 
+    addLostFigure(figure: Figure) {
+        // Функция, которая добавляет в массив с потерянными фигурами
+        // Съеденную фигуру
+        figure.color === Colors.BLACK
+            ?  this.board.lostBlackFigures.push(figure)
+            :  this.board.lostWhiteFigures.push(figure)
+
+    }
+
     //Функция для движения фигур
     moveFigure(target: Cell) {
         if (this.figure && this.figure?.canMove(target)) {
             this.figure?.moveFigure(target)
+            //Проверка, стояла ли фигура, на которую мы сходили
+            if(target.figure){
+                this.addLostFigure(target.figure)
+            }
+
             target.setFigure(this.figure);
             this.figure = null;
         }

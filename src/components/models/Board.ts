@@ -6,12 +6,15 @@ import {King} from "./figures/King";
 import {Bishop} from "./figures/Bishop";
 import {Rook} from "./figures/Rook";
 import {Knight} from "./figures/Knight";
+import {Figure} from "./figures/Figures";
 
 export class Board {
     //Ячейки представляют собой двумерный массив, строки и столбцы
     cells: Cell[][] = []
     //Ячейки знают про доску
 
+    lostBlackFigures: Figure[] = []
+    lostWhiteFigures: Figure[] = []
 
     public initCells() {
         //Формируем строки горизонтально из столбцов, которые получились во внутреннем цикле
@@ -38,6 +41,8 @@ export class Board {
         const newBoard = new Board();
         // Передавая в нее ячейки
         newBoard.cells = this.cells;
+        newBoard.lostWhiteFigures = this.lostWhiteFigures;
+        newBoard.lostBlackFigures = this.lostBlackFigures
         return newBoard;
     }
 

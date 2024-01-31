@@ -4,6 +4,8 @@ import BoardComponent from "./components/BoardComponent";
 import {Board} from "./components/models/Board";
 import {Colors} from "./components/models/Colors";
 import {Player} from "./components/models/Player";
+import LostFigures from "./components/LostFigures";
+import Timer from "./components/Timer";
 
 const App = () => {
 
@@ -38,12 +40,26 @@ const App = () => {
 
     return (
         <div className='app'>
+            <Timer
+                restart={restart}
+                currentPlayer={currentPlayer}
+            />
           <BoardComponent
             board={board}
             setBoard={setBoard}
             currentPlayer = {currentPlayer}
             swapPlayer = {swapPlayer}
           />
+            <div>
+                <LostFigures
+                    title="Черные фигуры"
+                    figures={board.lostBlackFigures}
+                />
+                <LostFigures
+                    title="Белые фигуры"
+                    figures={board.lostWhiteFigures}
+                />
+            </div>
         </div>
     );
 };
