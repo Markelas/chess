@@ -32,6 +32,14 @@ export class Cell {
         return this.figure === null;
     }
 
+    isEnemy(target: Cell): boolean  {
+        if(target.figure) {
+            // Если на ячейке есть фигура, проверяем, фигура, которой ходим,
+            // отличается ли по цвету, если да, то подсвечиваем
+            return this.figure?.color !== target.figure.color;
+        }
+        return false;
+    }
 
     isEmptyVertical(target: Cell): boolean {
         if (this.x !== target.x) {
