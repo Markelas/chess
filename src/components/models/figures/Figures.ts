@@ -34,6 +34,12 @@ export class Figure {
     }
 
     canMove(target: Cell) : boolean {
+        //Объявили условия, которые справедливы для всех фигур, что мы подсвечиваем только вражеские фигуры, чтобы съесть
+        if(target.figure?.color === this.color )
+            return false
+        //Короля нельзя съесть, поэтому он не подсвечивается
+        if(target.figure?.name === FigureNames.KING)
+            return false
         return true;
     }
 
