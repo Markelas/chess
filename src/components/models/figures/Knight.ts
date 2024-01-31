@@ -16,9 +16,18 @@ export class Knight extends Figure {
     }
 
     canMove(target: Cell): boolean {
-        //В дочернем классе описываем условия только для конкретной фигуры
+
+        // Для коня могут быть ячйки например
+        //    3.2     5.2
+        //  2.3         6.3
+        //        4.4(конь)
+        //  2.5         6.5
+        //    3.6      5.6
         if(!super.canMove(target))
             return false;
-        return true;
+        const dx = Math.abs(this.cell.x - target.x);
+        const dy = Math.abs(this.cell.y - target.y);
+
+        return (dx === 1 && dy === 2) || (dx === 2 && dy === 1)
     }
 }
